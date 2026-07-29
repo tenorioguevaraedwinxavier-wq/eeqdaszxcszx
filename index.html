@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Cómo Resistir la Prueba? | Ministerio Cristiano Internacional</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Poppins:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-card: #12121a;
+            --neon-purple: #b44dff;
+            --neon-cyan: #00f0ff;
+            --neon-pink: #ff2d95;
+            --neon-gold: #ffd700;
+            --neon-green: #39ff14;
+            --neon-blue: #448aff;
+            --text-primary: #e0e0e0;
+            --text-secondary: #c0c0d0;
+            --glow-strong: 0 0 20px;
+            --glow-medium: 0 0 15px;
+            --glow-subtle: 0 0 8px;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(ellipse at 20% 50%, rgba(180, 77, 255, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(0, 240, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 80%, rgba(255, 45, 149, 0.04) 0%, transparent 50%);
+            font-family: 'Poppins', 'Montserrat', sans-serif;
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .main-container {
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .neon-title-container {
+            background: var(--bg-card);
+            border: 2px solid rgba(180, 77, 255, 0.4);
+            border-radius: 20px;
+            padding: 30px 25px;
+            position: relative;
+            box-shadow: 
+                var(--glow-strong) rgba(180, 77, 255, 0.3),
+                var(--glow-strong) rgba(0, 240, 255, 0.2),
+                inset 0 0 30px rgba(180, 77, 255, 0.05);
+            animation: borderPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes borderPulse {
+            0%, 100% { border-color: rgba(180, 77, 255, 0.4); box-shadow: var(--glow-strong) rgba(180, 77, 255, 0.3), var(--glow-strong) rgba(0, 240, 255, 0.2); }
+            50% { border-color: rgba(0, 240, 255, 0.6); box-shadow: var(--glow-strong) rgba(0, 240, 255, 0.4), var(--glow-strong) rgba(180, 77, 255, 0.3); }
+        }
+
+        .title-emoji-row {
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+            text-shadow: 0 0 25px rgba(255, 215, 0, 0.7);
+            animation: floatEmoji 3s ease-in-out infinite;
+        }
+
+        @keyframes floatEmoji {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .neon-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1.6rem, 4vw, 2.4rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple), var(--neon-pink));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 18px rgba(180, 77, 255, 0.7)) drop-shadow(0 0 8px rgba(0, 240, 255, 0.5));
+            margin-bottom: 8px;
+        }
+
+        .neon-subtitle {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--neon-cyan);
+            text-shadow: var(--glow-medium) rgba(0, 240, 255, 0.6), 0 0 30px rgba(0, 240, 255, 0.3);
+            font-style: italic;
+            margin-bottom: 5px;
+        }
+
+        .neon-quote {
+            font-size: 1.1rem;
+            color: var(--neon-gold);
+            text-shadow: var(--glow-subtle) rgba(255, 215, 0, 0.5);
+            font-weight: 400;
+        }
+
+        /* Section Cards */
+        .section-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 25px 28px;
+            margin-bottom: 25px;
+            position: relative;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(5px);
+        }
+
+        .section-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(180, 77, 255, 0.4);
+            box-shadow: 
+                0 12px 40px rgba(0, 0, 0, 0.5),
+                0 0 25px rgba(180, 77, 255, 0.2),
+                0 0 10px rgba(0, 240, 255, 0.15);
+        }
+
+        .section-card.intro-card {
+            border-left: 4px solid var(--neon-cyan);
+            box-shadow: var(--glow-subtle) rgba(0, 240, 255, 0.2), 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .section-card.point-card {
+            border-left: 4px solid var(--neon-purple);
+        }
+
+        .section-card.point-card:nth-child(even) {
+            border-left: 4px solid var(--neon-pink);
+        }
+
+        .section-card.conclusion-card {
+            border: 2px solid rgba(255, 215, 0, 0.5);
+            box-shadow: var(--glow-medium) rgba(255, 215, 0, 0.2), 0 8px 32px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(135deg, rgba(18, 18, 26, 0.95), rgba(30, 25, 20, 0.95));
+        }
+
+        .section-card.signature-card {
+            text-align: center;
+            border: 2px solid rgba(57, 255, 20, 0.4);
+            box-shadow: var(--glow-medium) rgba(57, 255, 20, 0.15);
+            background: linear-gradient(180deg, rgba(18, 18, 26, 0.9), rgba(10, 20, 10, 0.9));
+        }
+
+        /* Typography */
+        .section-icon {
+            font-size: 1.8rem;
+            margin-right: 10px;
+            display: inline-block;
+            animation: pulseIcon 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseIcon {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title .highlight {
+            background: linear-gradient(135deg, var(--neon-purple), var(--neon-cyan));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .verse {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            padding: 15px 18px;
+            margin: 15px 0;
+            font-style: italic;
+            color: var(--neon-cyan);
+            border-left: 3px solid var(--neon-cyan);
+            text-shadow: 0 0 5px rgba(0, 240, 255, 0.3);
+            font-size: 1.05rem;
+        }
+
+        .verse.gold {
+            color: var(--neon-gold);
+            border-left-color: var(--neon-gold);
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+        }
+
+        .reflection {
+            color: var(--text-secondary);
+            margin-top: 8px;
+            font-size: 0.95rem;
+            font-weight: 300;
+        }
+
+        .reflection strong {
+            color: var(--neon-pink);
+            text-shadow: 0 0 5px rgba(255, 45, 149, 0.4);
+        }
+
+        .bible-icon {
+            font-size: 1.2rem;
+        }
+
+        /* Practical Application List */
+        .practical-list {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+        }
+
+        .practical-list li {
+            padding: 10px 15px;
+            margin: 8px 0;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .practical-list li:hover {
+            background: rgba(180, 77, 255, 0.08);
+            border-color: rgba(180, 77, 255, 0.3);
+            box-shadow: var(--glow-subtle) rgba(180, 77, 255, 0.15);
+        }
+
+        .practical-list .check-icon {
+            color: var(--neon-green);
+            font-size: 1.2rem;
+            text-shadow: 0 0 10px rgba(57, 255, 20, 0.6);
+        }
+
+        /* Signature */
+        .signature-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--neon-gold), #ffaa00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.6));
+            margin: 10px 0;
+        }
+
+        .signature-role {
+            color: var(--neon-cyan);
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+            font-size: 1.1rem;
+        }
+
+        .ministry-name {
+            color: var(--neon-green);
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-shadow: 0 0 12px rgba(57, 255, 20, 0.5);
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+
+        .emoji-large {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 5px;
+            text-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+        }
+
+        /* Divider */
+        .neon-divider {
+            width: 80%;
+            height: 2px;
+            margin: 20px auto;
+            background: linear-gradient(90deg, transparent, var(--neon-purple), var(--neon-cyan), var(--neon-purple), transparent);
+            border-radius: 50%;
+            filter: blur(1px);
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 10px;
+            }
+            .neon-title-container {
+                padding: 20px 15px;
+            }
+            .section-card {
+                padding: 18px 16px;
+            }
+            .neon-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--neon-purple);
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(180, 77, 255, 0.4);
+        }
+
+        /* Particles overlay effect */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.4;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        
+        <!-- TITLE SECTION -->
+        <header class="header">
+            <div class="neon-title-container">
+                <div class="title-emoji-row">📌⁉️</div>
+                <h1 class="neon-title">¿CÓMO RESISTIR LA PRUEBA?</h1>
+                <p class="neon-subtitle">🤔 "La prueba no busca destruir tu fe, sino revelar que Cristo es suficiente."</p>
+                <p class="neon-quote">✨ Permanece firme, Dios tiene el control ✨</p>
+            </div>
+        </header>
+
+        <!-- INTRODUCTION -->
+        <section class="section-card intro-card">
+            <h2 class="section-title">
+                <span class="section-icon">📖</span> <span class="highlight">Introducción</span>
+            </h2>
+            <p>Todo creyente enfrentará pruebas. La Biblia nunca promete una vida libre de aflicciones, pero sí promete la presencia de Dios en medio de ellas. La prueba no es una señal del abandono de Dios, sino una herramienta que Él usa para santificar a sus hijos, fortalecer su fe y hacerlos más semejantes a Cristo.</p>
+            <p style="margin-top:10px;">Jesús mismo dijo:</p>
+            <div class="verse">
+                <span class="bible-icon">📖</span> "En el mundo tendréis aflicción; pero confiad, <strong>yo he vencido al mundo</strong>." — Juan 16:33
+            </div>
+            <p>La pregunta no es si seremos probados, sino <strong style="color: var(--neon-pink);">cómo responderemos</strong> cuando llegue la prueba.</p>
+        </section>
+
+        <!-- POINT 1 -->
+        <section class="section-card point-card">
+            <h2 class="section-title">
+                <span class="section-icon">💎</span> <span class="highlight">1. Recuerda que Dios tiene un propósito en la prueba</span>
+            </h2>
+            <p>Dios nunca permite una prueba sin un propósito eterno. Aunque muchas veces no comprendemos el "por qué", podemos confiar en el "para qué".</p>
+            <div class="verse">
+                <span class="bible-icon">📖</span> "Hermanos míos, tened por sumo gozo cuando os halléis en diversas pruebas, sabiendo que la prueba de vuestra fe produce paciencia." — Santiago 1:2-3
+            </div>
+            <p class="reflection"><strong>Reflexión:</strong> La prueba fortalece el carácter cristiano. Dios está más interesado en nuestra santidad que en nuestra comodidad.</p>
+        </section>
+
+        <!-- POINT 2 -->
+        <section class="section-card point-card">
+            <h2 class="section-title">
+                <span class="section-icon">💎</span> <span class="highlight">2. Aférrate a las promesas de Dios y no a tus emociones</span>
+            </h2>
+            <p>Las emociones cambian constantemente, pero la Palabra de Dios permanece para siempre.</p>
+            <div class="verse">
+                <span class="bible-icon">📖</span> "Porque por fe andamos, no por vista." — 2 Corintios 5:7
+            </div>
+            <p class="reflection"><strong>Reflexión:</strong> La fe madura cuando decide creer lo que Dios ha dicho, aun cuando las circunstancias parecen decir lo contrario.</p>
+        </section>
+
+        <!-- POINT 3 -->
+        <section class="section-card point-card">
+            <h2 class="section-title">
+                <span class="section-icon">💎</span> <span class="highlight">3. Persevera en la oración</span>
+            </h2>
+            <p>La oración no siempre cambia inmediatamente la situación, pero transforma el corazón del creyente para depender más de Dios.</p>
+            <div class="verse">
+                <span class="bible-icon">📖</span> "Perseverad en la oración, velando en ella con acción de gracias." — Colosenses 4:2
+            </div>
+            <p class="reflection"><strong>Reflexión:</strong> La oración nos recuerda que nuestra fortaleza no proviene de nosotros, sino del Señor.</p>
+        </section>
+
+        <!-- POINT 4 -->
+        <section class="section-card point-card">
+            <h2 class="section-title">
+                <span class="section-icon">💎</span> <span class="highlight">4. No te apartes de la Palabra de Dios</span>
+            </h2>
+            <p>En medio de la prueba, la tentación es dejar de buscar a Dios. Sin embargo, es precisamente cuando más necesitamos alimentarnos de las Escrituras.</p>
+            <div class="verse">
+                <span class="bible-icon">📖</span> "Lámpara es a mis pies tu palabra, y lumbrera a mi camino." — Salmo 119:105
+            </div>
+            <p class="reflection"><strong>Reflexión:</strong> La Biblia ilumina el camino cuando todo parece oscuro.</p>
+        </section>
+
+        <!-- POINT 5 -->
+        <section class="section-card point-card">
+            <h2 class="section-title">
+                <span class="section-icon">💎</span> <span class="highlight">5. Confía en la fidelidad de Dios</span>
+            </h2>
+            <p>Dios conoce el límite de nuestras fuerzas y nunca deja solos a sus hijos.</p>
+            <div class="verse gold">
+                <span class="bible-icon">📖</span> "Fiel es Dios, que no os dejará ser tentados más de lo que podéis resistir, sino que dará también juntamente con la tentación la salida." — 1 Corintios 10:13
+            </div>
+            <p class="reflection"><strong>Reflexión:</strong> La fidelidad de Dios sostiene al creyente incluso cuando este siente que ya no puede más.</p>
+        </section>
+
+        <!-- POINT 6 -->
+        <section class="section-card point-card">
+            <h2 class="section-title">
+                <span class="section-icon">💎</span> <span class="highlight">6. Mira el ejemplo de Cristo</span>
+            </h2>
+            <p>Jesús sufrió la mayor de las pruebas y permaneció obediente al Padre hasta la cruz.</p>
+            <div class="verse">
+                <span class="bible-icon">📖</span> "Puestos los ojos en Jesús, el autor y consumador de la fe... sufrió la cruz." — Hebreos 12:2
+            </div>
+            <p class="reflection"><strong>Reflexión:</strong> Cuando contemplamos a Cristo, aprendemos que el sufrimiento no tiene la última palabra; <strong style="color: var(--neon-gold);">la victoria pertenece a Dios</strong>.</p>
+        </section>
+
+        <!-- PRACTICAL APPLICATION -->
+        <section class="section-card" style="border: 2px solid rgba(57, 255, 20, 0.4); box-shadow: var(--glow-medium) rgba(57, 255, 20, 0.15);">
+            <h2 class="section-title">
+                <span class="section-icon">💎</span> <span class="highlight">Aplicación Práctica</span>
+            </h2>
+            <ul class="practical-list">
+                <li><span class="check-icon">✅</span> Ora antes de reaccionar.</li>
+                <li><span class="check-icon">✅</span> Llena tu mente con la Palabra y no con el temor.</li>
+                <li><span class="check-icon">✅</span> Busca la comunión con otros creyentes que puedan animarte.</li>
+                <li><span class="check-icon">✅</span> Recuerda las veces que Dios ya ha sido fiel.</li>
+                <li><span class="check-icon">✅</span> Espera con paciencia; Dios nunca llega tarde.</li>
+            </ul>
+        </section>
+
+        <!-- CONCLUSION -->
+        <section class="section-card conclusion-card">
+            <h2 class="section-title">
+                <span class="section-icon">💎</span> <span class="highlight">Conclusión</span>
+            </h2>
+            <p>Resistir la prueba no significa nunca llorar, nunca sentir debilidad o nunca hacer preguntas. Significa <strong style="color: var(--neon-gold);">permanecer confiando en Dios</strong> aun cuando el camino sea difícil. La prueba revela dónde está puesta nuestra confianza y nos enseña que la gracia de Cristo es suficiente para sostenernos.</p>
+            <p style="margin-top:10px;">Como escribió el apóstol Pedro:</p>
+            <div class="verse gold">
+                <span class="bible-icon">📖</span> "Para que sometida a prueba vuestra fe, mucho más preciosa que el oro... sea hallada en alabanza, gloria y honra cuando sea manifestado Jesucristo." — 1 Pedro 1:7
+            </div>
+        </section>
+
+        <!-- FINAL REFLECTION -->
+        <section class="section-card" style="border: 2px solid rgba(255, 45, 149, 0.4); box-shadow: var(--glow-medium) rgba(255, 45, 149, 0.2);">
+            <h2 class="section-title">
+                <span class="section-icon">💎</span> <span class="highlight">Reflexión Final</span>
+            </h2>
+            <p style="font-size: 1.1rem; text-align: center; color: #ffffff;">
+                La prueba puede quitarte muchas cosas, pero <strong style="color: var(--neon-cyan); text-shadow: 0 0 10px rgba(0,240,255,0.5);">nunca podrá separar del amor de Dios</strong> a quien está en Cristo Jesús. Si permaneces aferrado al Señor, descubrirás que su gracia es más fuerte que el dolor, su paz supera toda circunstancia y su fidelidad permanece para siempre.
+            </p>
+            <div class="neon-divider"></div>
+        </section>
+
+        <!-- SIGNATURE -->
+        <section class="section-card signature-card">
+            <span class="emoji-large">✍🏿👨🏿‍✈️</span>
+            <p style="color: var(--text-secondary); margin-bottom: 0;">Atte.</p>
+            <p class="signature-name">Pastor Romel Tenorio M.</p>
+            <p class="signature-role">Líder del Ministerio Cristiano Internacional</p>
+            <p class="ministry-name">🚔 Policías de Jesucristo Rey 🫂👑</p>
+            <p style="color: var(--neon-gold); margin-top: 10px; font-style: italic; text-shadow: 0 0 8px rgba(255,215,0,0.4);">
+                "Sirviendo con fe, protegiendo con amor"
+            </p>
+        </section>
+
+    </div>
+
+    <!-- Subtle particle effect canvas -->
+    <canvas class="particles" id="particleCanvas"></canvas>
+
+    <script>
+        // Simple particle animation for neon atmosphere
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        const particles = [];
+        const neonColors = ['#b44dff', '#00f0ff', '#ff2d95', '#ffd700', '#39ff14'];
+        
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedY = Math.random() * 0.3 + 0.05;
+                this.speedX = (Math.random() - 0.5) * 0.2;
+                this.color = neonColors[Math.floor(Math.random() * neonColors.length)];
+                this.opacity = Math.random() * 0.5 + 0.1;
+            }
+            update() {
+                this.y -= this.speedY;
+                this.x += this.speedX;
+                if (this.y < -10 || this.x < -10 || this.x > canvas.width + 10) {
+                    this.reset();
+                    this.y = canvas.height + 10;
+                }
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.globalAlpha = this.opacity;
+                ctx.fill();
+                ctx.globalAlpha = 1;
+            }
+        }
+        
+        for (let i = 0; i < 60; i++) {
+            particles.push(new Particle());
+        }
+        
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+        
+        animate();
+        
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+</html>
